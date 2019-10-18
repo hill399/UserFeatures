@@ -128,10 +128,8 @@ contract UserFeatures is Ownable {
     uint256 spendThreshold = addressData[_address].addressDailySpend.add(_value);
 
     if(addressData[_address].addressWhitelisted == false){
-      if(addressData[_address].addressLastSpendEpochDiv == (now.div(EPOCH_DAY)) || spendThreshold > dailySendLimit){
-        if(spendThreshold > dailySendLimit){
-          return false;
-        }
+      if(spendThreshold > dailySendLimit){
+        return false;
       }
     }
     return true;
